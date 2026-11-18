@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1794938865507,
+      "tag": "0000_fair_blizzard",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1794976097557,
+      "tag": "0001_puzzling_jigsaw",
+      "breakpoints": true
+    }
+  ]
+}

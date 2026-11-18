@@ -1,0 +1,5 @@
+export const teamName=n=>n===0?'COBALT':'EMBER';
+export function newMatch(mode){return{mode,round:1,scores:[0,0],remaining:90,bomb:null,transition:0,finished:false,winner:null,notice:''};}
+export function finishRound(m,winner,reason){if(m.finished||m.transition>0)return;m.scores[winner]++;m.notice=teamName(winner)+' · '+reason;if(m.round>=5){m.finished=true;m.winner=m.scores[0]>m.scores[1]?0:1;}else m.transition=4;}
+export function registerKill(m,killerTeam){if(m.mode!=='tdm'||m.finished)return;m.scores[killerTeam]++;if(m.scores[killerTeam]>=40){m.finished=true;m.winner=killerTeam;}}
+export function opposingHit(actor,targets,dir,range,occluded){let best=null,bestD=range;for(const p of targets){if(p===actor||p.health<=0||p.team===actor.team||p.invulnerable>0)continue;const dx=p.x-actor.x,dy=(p.y||1.7)-.35-actor.y,dz=p.z-actor.z,t=dx*dir.x+dy*dir.y+dz*dir.z;if(t<=0||t>bestD)continue;const d2=dx*dx+dy*dy+dz*dz-t*t;if(d2<.38*.38&&!occluded(actor,{x:p.x,y:(p.y||1.7)-.35,z:p.z})){best=p;bestD=t;}}return best;}

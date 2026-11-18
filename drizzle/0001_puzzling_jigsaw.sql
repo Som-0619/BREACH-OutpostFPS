@@ -1,0 +1,1 @@
+ALTER TABLE `breach_rooms` ADD `mode` text DEFAULT 'coop' NOT NULL;
